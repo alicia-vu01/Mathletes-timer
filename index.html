@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Speed-Up Countdown Timer</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
@@ -15,46 +15,55 @@
       height: 100vh;
       background: #1e1e1e;
       color: white;
+      margin: 0;
+      padding: 0;
     }
     h1 {
       font-family: 'Chewy', cursive;
       color: #FF9EBD;
-      font-size: 3em;
-      margin: 0;
+      font-size: 2.5em; /* smaller */
+      margin: 0 0 5px 0; /* tighter bottom margin */
     }
     h2 {
       color: white;
-      font-size: 1.5em;
-      margin: 5px 0 10px;
+      font-size: 1.2em; /* smaller */
+      margin: 2px 0 8px 0; /* tighter */
     }
     #time-input {
-      font-size: 1em;
-      padding: 5px;
-      margin-bottom: 10px;
+      font-size: 0.9em;
+      padding: 4px 6px;
+      margin-bottom: 6px;
+      width: 160px;
+      text-align: center;
+      border-radius: 6px;
+      border: none;
     }
     #timer-container {
       display: flex;
       align-items: baseline;
-      gap: 20px;
-      margin-bottom: 10px;
+      gap: 10px; /* reduced gap */
+      margin-bottom: 8px;
     }
     #timer {
-      font-size: 500px;
+      font-size: 500px; /* much smaller */
+      line-height: 1;
     }
     #speed-display {
-      font-size: 200px;
+      font-size: 110px; /* smaller */
       color: white;
+      line-height: 1;
     }
     button {
-      font-size: 1.5em;
-      margin: 5px;
-      padding: 10px 20px;
+      font-size: 1.1em; /* smaller */
+      margin: 3px 6px; /* tighter */
+      padding: 8px 14px;
       background: #FF9EBD;
       color: white;
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
       text-transform: uppercase;
+      transition: background-color 0.2s ease;
     }
     button:hover {
       background: #e187a6;
@@ -77,10 +86,10 @@
   <button onclick="resetTimer()">Reset</button>
 
   <audio id="beep-sound">
-    <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg">
+    <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg" />
   </audio>
   <audio id="start-beep">
-    <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg">
+    <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg" />
   </audio>
 
   <script>
@@ -118,15 +127,14 @@
       updateDisplay();
     }
 
-function playStartBeeps() {
-  for (let i = 0; i < 3; i++) {
-    setTimeout(() => {
-      const beepClone = startBeep.cloneNode(true);
-      beepClone.play();
-    }, i * 1000);  // changed from 500ms to 1000ms
-  }
-}
-
+    function playStartBeeps() {
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+          const beepClone = startBeep.cloneNode(true);
+          beepClone.play();
+        }, i * 1000);
+      }
+    }
 
     function startTimer() {
       if (!hasStartedOnce) {
